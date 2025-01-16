@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<title>Freaky Olympics</title>
+		<link href="freaky.css" rel="stylesheet">
+	</head>
+	<body>
+		<h1>The Freaky Olympics</h1>
+		<!--
+		<h2><u>Pro League</u></h2>
+		<div>
+		<ol>
+			<li>Ryan</li>
+		</ol>
+		</div>
+		<h2><u>Regular</u></h2>
+		<div>
+		<ol>
+			<li>Nikita</li>
+			<li>Manza</li>
+			<li>Harrison</li>
+			<li>Elijah</li>
+			<li class="went-up">Alex</li>
+			<li>Lalith</li>
+		</ol>
+		</div>-->
+	</body>
+	<script>
+		var leagues = ["Pro League", "Regular"];
+		var leaders = {
+			"Pro League": [ "Ryan" ],
+			"Regular": [ "Nikita", "Manza", "Harrison", "Elijah", "Alex", "Lalith" ]
+		};
+		var wentup = [ "Alex" ];
+		var wentdown = [];
+		var allHTML = "";
+		Object.entries(leaders).forEach(([sec, people]) => {
+			var counter = 1;
+			allHTML += `<h2><u>${sec}</u></h2>\n<div>\n<ol>`;
+			people.forEach(person => {
+				var posChange = "";
+				if (wentup.includes(person)) posChange = "▲";
+				if (wentdown.includes(person)) posChange = "▼";
+				var posHTML = posChange === "" ? "" : (posChange === "▲" ? "<up>▲</up>" : "<down>▼</down>");
+				allHTML += `<li ${posChange !== "" ? "class=\"pos-change\"" : ""}>${posHTML} ${counter}. ${person}</li>\n`;
+				counter++;
+			});
+			allHTML += "</ol>\n</div>\n";
+			//document.body.insertAdjacentHTML(allHTML, "beforeend");
+		});
+		document.body.insertAdjacentHTML("beforeend", allHTML);
+	</script>
+		
+</html>

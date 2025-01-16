@@ -1,0 +1,53 @@
+@font-face {
+	font-family: 'Cursiveyay';
+	src: url("fonts/GreatVibes-Regular.ttf"),
+         url("fonts/GreatVibes-Regular.woff") format('woff'), /* Modern Browsers */
+         url("fonts/GreatVibes-Regular.ttf")  format('truetype'), /* Safari, Android, iOS */
+}
+@font-face {
+	font-family: 'RegularHeaderFontThing';
+	src: url("fonts/Raleway-Medium.ttf"),
+		url("fonts/Raleway-Medium.woff") format('woff'),
+		url("fonts/Raleway-Medium.ttf") format("truetype");
+}
+* {
+	color:white;
+}
+h2 {
+	text-align: center;
+	height:10px;
+	font-size: 3.5vw;
+	font-family: RegularHeaderFontThing;
+}
+li {
+	font-family: RegularHeaderFontThing;
+	font-size: 1.5vw;
+}
+ol {
+	list-style-type: none;
+}
+li.pos-change {
+	margin-left: -25.5px;
+}
+up {
+	color: lime;
+}
+down {
+	color: red;
+}
+h1 {
+	padding-top: 14px;
+	text-align: center;
+	height:10px;
+	padding-bottom: 50px;
+	font-size: 6.5vw;
+	font-family: Cursiveyay;
+}
+div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+html {
+	background-color: black;
+}
