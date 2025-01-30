@@ -5,6 +5,13 @@
 	</head>
 	<body>
 		<h1>The Freaky Olympics</h1>
+		<div id="legend">
+			<h2 id="legend-header"><u>Key</u></h2>
+			<br>
+				<p class="key-elem first"><up>▲</up> — Went up</p>
+				<p class="key-elem next"><down>▼</down> — Went down</p>
+				<p class="key-elem next"><new>★</new> — Newly added</p>
+		</div>
 		<!--
 		<h2><u>Pro League</u></h2>
 		<div>
@@ -28,19 +35,36 @@
 		var leagues = ["Minor League", "Major League"];
 		var leaders = {
 			"Minor League": [ "Ryan" ],
-			"Major League": [ "Nikita", "Mangza", "Harrison", "Elijah", "Vincent", "Alex", "Lalith" ]
+			"Major League": [ "Nikita", "Alfonso", "Mangza", "Harrison", "TJ", "Elijah", "Vincent", "Alex", "Lalith" ]
 		};
 		var wentup = ["Vincent"];
 		var wentdown = ["Alex"];
+		var newM = ["TJ", "Alfonso"];
 		var allHTML = "";
 		Object.entries(leaders).forEach(([sec, people]) => {
 			var counter = 1;
 			allHTML += `<h2><u>${sec}</u></h2>\n<div>\n<ol>`;
 			people.forEach(person => {
+				var wentUp = "▲";
+				var wentDown = "▼";
+				var newC = "★";
 				var posChange = "";
-				if (wentup.includes(person)) posChange = "▲";
-				if (wentdown.includes(person)) posChange = "▼";
-				var posHTML = posChange === "" ? "" : (posChange === "▲" ? "<up>▲</up>" : "<down>▼</down>");
+				if (wentup.includes(person)) posChange = wentUp;
+				if (wentdown.includes(person)) posChange = wentDown;
+				if (newM.includes(person)) posChange = newC;
+				var posHTML = "";
+				switch(posChange) {
+					case wentUp:
+						posHTML = "<up>" + wentUp + "</up>";
+						break;
+					case wentDown:
+						posHTML = "<down>" + wentDown + "</down>";
+						break;
+					case newC:
+						posHTML = "<new>" + newC + "</new>";
+						break;
+				}
+				//var posHTML = posChange === "" ? "" : (posChange === wentUp ? "<up>" + wentUp + "</up>" : "<down>" + wentDown + "</down>");
 				allHTML += `<li ${posChange !== "" ? "class=\"pos-change\"" : ""}>${posHTML} ${counter}. ${person}</li>\n`;
 				counter++;
 			});
@@ -48,6 +72,7 @@
 			//document.body.insertAdjacentHTML(allHTML, "beforeend");
 		});
 		document.body.insertAdjacentHTML("beforeend", allHTML);
+
 	</script>
 		
 </html>

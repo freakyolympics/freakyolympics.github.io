@@ -35,6 +35,10 @@ up {
 down {
 	color: red;
 }
+new {
+	color: gold;
+	margin-left: 3.4px;
+}
 h1 {
 	padding-top: 14px;
 	text-align: center;
@@ -47,6 +51,32 @@ div {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+div#legend {
+	position: absolute !important;
+	top: 25px !important;
+	left: 35px !important;
+	width: 175px;
+	border-radius: 0px;
+	border: 2px solid white;
+	display: flex;
+	flex-direction: column;
+}
+h2#legend-header {
+	font-size: 2.15vw;
+	margin-top: 15px;
+}
+#key {
+	margin-left: -40px;
+}
+.key-elem.first {
+	margin-top: 8px;
+}
+.key-elem {
+	font-family: RegularHeaderFontThing;
+}
+.key-elem.next {
+	margin-top: -15px;
 }
 html {
 	background-color: black;
