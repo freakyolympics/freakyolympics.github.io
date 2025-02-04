@@ -34,12 +34,13 @@
 	<script>
 		var leagues = ["Minor League", "Major League"];
 		var leaders = {
-			"Minor League": [ "Ryan" ],
-			"Major League": [ "Nikita", "Alfonso", "Mangza", "Thomas", "Harrison", "TJ", "Elijah", "Vincent", "Alex", "Lalith" ]
+			"Minor League": [ "Ryan", "Mangza" ],
+			"Major League": [ "Nikita", "Alfonso", "Thomas, Reed, and Burke", "TJ", "Harrison", "Elijah", "Vincent", "Alex", "Lalith" ]
 		};
-		var wentup = ["Vincent"];
-		var wentdown = ["Alex"];
-		var newM = ["TJ", "Alfonso", "Thomas"];
+		var wentup = ["Mangza"];
+		var wentdown = [];
+		var newM = ["TJ", "Alfonso", "Thomas, Reed, and Burke"];
+		var theKing = ["Ryan"];
 		var allHTML = "";
 		Object.entries(leaders).forEach(([sec, people]) => {
 			var counter = 1;
@@ -48,10 +49,12 @@
 				var wentUp = "▲";
 				var wentDown = "▼";
 				var newC = "★";
+				var theKingC = "👑";
 				var posChange = "";
 				if (wentup.includes(person)) posChange = wentUp;
 				if (wentdown.includes(person)) posChange = wentDown;
 				if (newM.includes(person)) posChange = newC;
+				if (theKing.includes(person)) posChange = theKingC;
 				var posHTML = "";
 				switch(posChange) {
 					case wentUp:
@@ -62,6 +65,9 @@
 						break;
 					case newC:
 						posHTML = "<new>" + newC + "</new>";
+						break;
+					case theKingC:
+						posHTML = "<king>" + theKingC + "</new>";
 						break;
 				}
 				//var posHTML = posChange === "" ? "" : (posChange === wentUp ? "<up>" + wentUp + "</up>" : "<down>" + wentDown + "</down>");
