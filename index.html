@@ -35,17 +35,21 @@
 		var leagues = ["Minor League", "Major League"];
 		var leaders = {
 			"Minor League": [ "Ryan", "Mangza" ],
-			"Major League": [ "Nikita", "Alfonso", "Thomas, Reed, and Burke", "August", "Harrison", "TJ", "Elijah", "Vincent", "Ryan B.", "Alex", "Lalith" ]
+			"Major League": [ "Nikita", "Alfonso", "Thomas, Reed, and Burke", "August", "Harrison", "Vincent", "TJ", "Elijah", "Ryan B.", "Alex", "Lalith" ]
 		};
 		var wentup = ["Mangza", "Harrison", "Vincent"];
 		var wentdown = ["TJ", "Ryan B."];
+		var specialranks = {
+		"Harrison": 4.5
+		}
 		var newM = ["Thomas, Reed, and Burke", "August"];
 		var theKing = ["Ryan"];
 		var allHTML = "";
 		Object.entries(leaders).forEach(([sec, people]) => {
-			var counter = 1;
 			allHTML += `<h2><u>${sec}</u></h2>\n<div>\n<ol>`;
-			people.forEach(person => {
+			var counterOffset = 0;
+			people.forEach((person, counter, arr) => {
+				counter++;
 				var wentUp = "▲";
 				var wentDown = "▼";
 				var newC = "★";
@@ -70,9 +74,16 @@
 						posHTML = "<king>" + theKingC + "</new>";
 						break;
 				}
+				let found = false;
+				Object.entries(specialranks).forEach(([persona, rank]) => {
+					if (persona === person) {
+						found = true;
+						counter = rank;
+						counterOffset++;
+					}
+				});
 				//var posHTML = posChange === "" ? "" : (posChange === wentUp ? "<up>" + wentUp + "</up>" : "<down>" + wentDown + "</down>");
-				allHTML += `<li ${posChange !== "" ? "class=\"pos-change\"" : ""}>${posHTML} ${counter}. ${person}</li>\n`;
-				counter++;
+				allHTML += `<li ${posChange !== "" ? "class=\"pos-change\"" : ""}>${posHTML} ${found ? `${counter}` : `${counter - counterOffset}`}. ${person}</li>\n`;
 			});
 			allHTML += "</ol>\n</div>\n";
 			//document.body.insertAdjacentHTML(allHTML, "beforeend");
